@@ -1,0 +1,20 @@
+<h2>My TODOS</h2>
+<div>
+  <label for="new-todo-sum">Todo summary: </label>
+  <input id="new-todo-sum" #todoSummary />
+  <label for="new-todo-desc">Todo description: </label>
+  <input id="new-todo-desc" #todoDescription />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(todoSummary.value, todoDescription.value); todoSummary.value=''" todoDescription.value="'">
+    Add todo
+  </button>
+</div>
+<ul class="todos">
+  <li *ngFor="let todo of todos">
+    <a routerLink="/detail/{{todo.id}}">
+      <span class="num">{{todo.id}}</span> {{todo.summary}}
+    </a>
+    <button type="button" class="delete" title="delete todo" (click)="delete(todo)">x</button>
+  </li>
+</ul>
